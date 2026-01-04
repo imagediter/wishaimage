@@ -1,257 +1,1229 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReelGrab Pro | Premium Instagram Reels Downloader</title>
+    <meta name="description" content="Download Instagram Reels in 4K quality without watermark. AI-powered detection, batch downloads, and premium features.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #FF2E63;
+            --secondary: #08D9D6;
+            --dark: #252A34;
+            --light: #EAEAEA;
+            --gradient: linear-gradient(135deg, #FF2E63 0%, #FF8961 25%, #08D9D6 100%);
+            --gradient-reverse: linear-gradient(135deg, #08D9D6 0%, #FF8961 25%, #FF2E63 100%);
+            --glass: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.12);
+            --shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            --radius: 20px;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+        }
 
-<title>Instagram Reels Downloader – Fast & Free Video Downloader</title>
-<meta name="description" content="Download Instagram Reels & YouTube Shorts videos instantly for free. No login, no watermark, mobile-friendly downloader.">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎬</text></svg>">
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
 
-<style>
-:root{
---bg:#f8fafc;
---card:#ffffff;
---text:#0f172a;
---muted:#64748b;
---accent:linear-gradient(135deg,#f58529,#dd2a7b,#8134af,#515bd4);
---shadow:0 12px 30px rgba(0,0,0,.08);
-}
-[data-theme="dark"]{
---bg:#020617;
---card:#020617;
---text:#e5e7eb;
---muted:#94a3b8;
-}
-*{box-sizing:border-box}
-body{
-margin:0;
-font-family:system-ui,sans-serif;
-background:var(--bg);
-color:var(--text);
-}
-header{
-background:var(--accent);
-color:#fff;
-padding:2.5rem 1rem;
-text-align:center;
-position:relative;
-}
-.logo{
-display:inline-flex;
-align-items:center;
-justify-content:center;
-width:56px;
-height:56px;
-border-radius:16px;
-background:rgba(255,255,255,.2);
-font-size:28px;
-margin-bottom:.5rem;
-}
-.toggle{
-position:absolute;
-top:15px;
-right:15px;
-background:rgba(255,255,255,.25);
-border:none;
-color:#fff;
-padding:.4rem .6rem;
-border-radius:8px;
-cursor:pointer;
-}
-main{
-max-width:900px;
-margin:-2rem auto 0;
-padding:1rem;
-}
-.tabs{
-display:flex;
-gap:.5rem;
-margin-bottom:1rem;
-}
-.tabs button{
-flex:1;
-padding:.8rem;
-border-radius:12px;
-border:1px solid #e5e7eb;
-background:var(--card);
-cursor:pointer;
-font-weight:600;
-}
-.tabs button.active{
-background:var(--accent);
-color:#fff;
-border:none;
-}
-.card{
-background:var(--card);
-border-radius:18px;
-box-shadow:var(--shadow);
-padding:1.5rem;
-}
-label{font-weight:600}
-input{
-width:100%;
-padding:.9rem 1rem;
-margin-top:.4rem;
-border-radius:12px;
-border:1px solid #cbd5f5;
-}
-button.primary{
-margin-top:1rem;
-width:100%;
-padding:.9rem;
-border:none;
-border-radius:12px;
-font-weight:600;
-background:var(--accent);
-color:#fff;
-cursor:pointer;
-}
-.options{
-display:flex;
-justify-content:space-between;
-margin-top:1rem;
-font-size:.9rem;
-}
-.progress{
-display:none;
-margin-top:1rem;
-height:10px;
-background:#e5e7eb;
-border-radius:999px;
-overflow:hidden;
-}
-.progress span{
-display:block;
-height:100%;
-width:0%;
-background:var(--accent);
-animation:load 2s forwards;
-}
-@keyframes load{to{width:100%}}
-.result{
-display:none;
-text-align:center;
-margin-top:1.5rem;
-}
-.result img{
-max-width:320px;
-border-radius:14px;
-box-shadow:var(--shadow);
-}
-section.content{
-margin-top:3rem;
-padding:1.5rem;
-}
-section.content h2{margin-top:0}
-.faq details{
-background:var(--card);
-border-radius:14px;
-padding:1rem;
-margin-bottom:.8rem;
-box-shadow:var(--shadow);
-}
-footer{
-text-align:center;
-padding:2rem 1rem;
-font-size:.85rem;
-color:var(--muted);
-}
-</style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--dark);
+            color: var(--light);
+            min-height: 100vh;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(255, 46, 99, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(8, 217, 214, 0.1) 0%, transparent 20%);
+        }
+
+        /* Animated Background Elements */
+        .floating-shapes {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            background: var(--gradient);
+            opacity: 0.1;
+            animation: float 15s infinite ease-in-out;
+        }
+
+        .shape:nth-child(1) { width: 300px; height: 300px; top: 10%; left: 5%; animation-delay: 0s; }
+        .shape:nth-child(2) { width: 150px; height: 150px; top: 60%; right: 10%; animation-delay: -5s; }
+        .shape:nth-child(3) { width: 200px; height: 200px; bottom: 20%; left: 15%; animation-delay: -10s; }
+        .shape:nth-child(4) { width: 100px; height: 100px; top: 20%; right: 20%; animation-delay: -7s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-40px) rotate(180deg); }
+        }
+
+        /* Header */
+        header {
+            padding: 2rem 5%;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            background: rgba(37, 42, 52, 0.8);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+            transform: rotate(15deg);
+            transition: var(--transition);
+        }
+
+        .logo:hover .logo-icon {
+            transform: rotate(0deg) scale(1.1);
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .premium-badge {
+            background: var(--gradient);
+            color: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 180px 5% 100px;
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, #FF2E63, #FF8961, #08D9D6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -1px;
+        }
+
+        .hero h1 span {
+            display: block;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: rgba(234, 234, 234, 0.8);
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            line-height: 1.6;
+        }
+
+        /* Main Download Card */
+        .main-card {
+            max-width: 900px;
+            margin: 0 auto 100px;
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border-radius: var(--radius);
+            border: 1px solid var(--glass-border);
+            padding: 3rem;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .main-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--gradient);
+        }
+
+        .card-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .card-header h2 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-header p {
+            color: rgba(234, 234, 234, 0.7);
+        }
+
+        /* URL Input */
+        .url-input-container {
+            margin-bottom: 2rem;
+        }
+
+        .input-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-wrapper input {
+            width: 100%;
+            padding: 1.5rem 1.5rem 1.5rem 4rem;
+            font-size: 1.1rem;
+            background: rgba(0, 0, 0, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .input-wrapper input:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(8, 217, 214, 0.2);
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            color: var(--secondary);
+        }
+
+        .url-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+        }
+
+        .demo-btn {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(234, 234, 234, 0.7);
+            padding: 0.7rem 1.5rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .demo-btn:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+        }
+
+        /* Feature Highlights */
+        .feature-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .feature-chip {
+            background: rgba(8, 217, 214, 0.1);
+            border: 1px solid rgba(8, 217, 214, 0.2);
+            border-radius: 50px;
+            padding: 0.8rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .feature-chip:hover {
+            transform: translateY(-3px);
+            background: rgba(8, 217, 214, 0.2);
+        }
+
+        /* Download Button */
+        .download-btn {
+            width: 100%;
+            padding: 1.5rem;
+            background: var(--gradient);
+            border: none;
+            border-radius: 15px;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(255, 46, 99, 0.3);
+        }
+
+        .download-btn::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.5s;
+        }
+
+        .download-btn:hover::after {
+            left: 100%;
+        }
+
+        /* Preview Card */
+        .preview-card {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-top: 3rem;
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .preview-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .video-preview {
+            width: 100%;
+            aspect-ratio: 9/16;
+            background: linear-gradient(45deg, #1a1f2e, #252A34);
+            border-radius: 15px;
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-preview::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            100% { left: 100%; }
+        }
+
+        .video-info {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .video-thumb {
+            width: 80px;
+            height: 80px;
+            border-radius: 10px;
+            background: var(--gradient);
+            flex-shrink: 0;
+        }
+
+        .video-meta h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .video-meta p {
+            color: rgba(234, 234, 234, 0.7);
+            font-size: 0.9rem;
+        }
+
+        /* Quality Selector */
+        .quality-selector {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .quality-option {
+            flex: 1;
+            padding: 1.2rem;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .quality-option:hover {
+            border-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .quality-option.selected {
+            background: rgba(8, 217, 214, 0.1);
+            border-color: var(--secondary);
+        }
+
+        .quality-badge {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 0.3rem 0.7rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-left: 8px;
+        }
+
+        /* Features Section */
+        .features-section {
+            max-width: 1400px;
+            margin: 0 auto 100px;
+            padding: 0 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 3rem;
+            background: linear-gradient(to right, #FF2E63, #08D9D6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius);
+            padding: 2.5rem;
+            border: 1px solid var(--glass-border);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--secondary);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(8, 217, 214, 0.1);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: rgba(234, 234, 234, 0.7);
+            line-height: 1.6;
+        }
+
+        /* Stats Counter */
+        .stats-section {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: var(--radius);
+            padding: 4rem;
+            margin: 100px auto;
+            max-width: 1200px;
+            text-align: center;
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1;
+        }
+
+        .stat-label {
+            color: rgba(234, 234, 234, 0.7);
+            margin-top: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 4rem 5% 2rem;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .footer-links h4 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(234, 234, 234, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(234, 234, 234, 0.5);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h1 { font-size: 3.5rem; }
+            .features-grid { grid-template-columns: 1fr; }
+            .stats-container { flex-direction: column; }
+            .nav-links { display: none; }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.8rem; }
+            .main-card { padding: 2rem; }
+            .section-title { font-size: 2.2rem; }
+            .quality-selector { flex-direction: column; }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 2.2rem; }
+            .hero { padding: 150px 5% 80px; }
+            .feature-card { padding: 1.8rem; }
+        }
+    </style>
 </head>
-
 <body>
+    <!-- Animated Background -->
+    <div class="floating-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
 
-<header>
-<button class="toggle" onclick="toggleTheme()">🌙</button>
-<div class="logo">🎬</div>
-<h1>InstagramReelsDownloader</h1>
-<p>Download Instagram Reels & Shorts Instantly — 100% Free</p>
-</header>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">▶️</div>
+                <div class="logo-text">ReelGrab Pro</div>
+            </a>
+            
+            <nav class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#premium">Premium</a>
+                <a href="#support">Support</a>
+                <div class="premium-badge">
+                    <i class="fas fa-crown"></i>
+                    PRO Version
+                </div>
+            </nav>
+        </div>
+    </header>
 
-<main>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>
+            <span>Download Instagram Reels</span>
+            <span>In <span style="color: #08D9D6">4K</span> Quality</span>
+        </h1>
+        <p class="hero-subtitle">
+            The most advanced Instagram Reels downloader. Experience lightning-fast downloads, 
+            batch processing, and watermark-free videos with our AI-powered technology.
+        </p>
+    </section>
 
-<div class="tabs">
-<button class="active" onclick="switchTool('insta')">Instagram Reels</button>
-<button onclick="switchTool('yt')">YouTube Shorts</button>
-</div>
+    <!-- Main Download Card -->
+    <section class="main-card">
+        <div class="card-header">
+            <h2>Download Any Reel in Seconds</h2>
+            <p>Paste your Instagram Reel URL below and get instant access</p>
+        </div>
 
-<div class="card">
+        <div class="url-input-container">
+            <div class="input-label">
+                <i class="fas fa-link"></i>
+                Instagram Reel URL
+            </div>
+            <div class="input-wrapper">
+                <input type="url" id="urlInput" placeholder="https://www.instagram.com/reel/CxampleVideo123/">
+                <div class="input-icon">
+                    <i class="fab fa-instagram"></i>
+                </div>
+            </div>
+            <div class="url-actions">
+                <button class="demo-btn" id="demoBtn">
+                    <i class="fas fa-magic"></i>
+                    Try Demo
+                </button>
+                <div style="color: rgba(234, 234, 234, 0.6); font-size: 0.9rem;">
+                    <i class="fas fa-shield-alt"></i> 100% Secure & Private
+                </div>
+            </div>
+        </div>
 
-<label id="toolLabel">Instagram Reels URL</label>
-<input id="url" placeholder="Paste Instagram Reels URL here...">
+        <div class="feature-highlights">
+            <div class="feature-chip">
+                <i class="fas fa-bolt"></i>
+                Lightning Fast
+            </div>
+            <div class="feature-chip">
+                <i class="fas fa-tint-slash"></i>
+                No Watermark
+            </div>
+            <div class="feature-chip">
+                <i class="fas fa-hd"></i>
+                4K Quality
+            </div>
+            <div class="feature-chip">
+                <i class="fas fa-infinity"></i>
+                Unlimited Downloads
+            </div>
+        </div>
 
-<div class="options">
-<label><input type="checkbox"> Remove Watermark</label>
-<span>HD Quality</span>
-</div>
+        <button class="download-btn" id="downloadBtn">
+            <i class="fas fa-download"></i>
+            Analyze & Download
+            <span class="quality-badge">AI-Powered</span>
+        </button>
 
-<button class="primary" onclick="download()">Download</button>
+        <!-- Preview Section (Hidden by default) -->
+        <div class="preview-card" id="previewCard">
+            <div class="preview-header">
+                <h3>Video Preview</h3>
+                <div style="color: #08D9D6; font-weight: 600;">
+                    <i class="fas fa-check-circle"></i>
+                    Ready to Download
+                </div>
+            </div>
 
-<div class="progress" id="progress"><span></span></div>
+            <div class="video-preview"></div>
 
-<div class="result" id="result">
-<img src="https://via.placeholder.com/320x180?text=Video+Preview" alt="Video Preview">
-<p><strong>Sample Video Preview (Mock)</strong></p>
-<button class="primary">Download Video</button>
-</div>
+            <div class="video-info">
+                <div class="video-thumb"></div>
+                <div class="video-meta">
+                    <h3 id="videoTitle">Amazing Travel Reel ✈️</h3>
+                    <p>
+                        <span id="videoDuration">0:45</span> • 
+                        <span id="videoSize">12.4 MB</span> • 
+                        <span id="videoViews">245K views</span>
+                    </p>
+                </div>
+            </div>
 
-</div>
+            <div class="quality-selector">
+                <div class="quality-option selected" data-quality="4k">
+                    <div style="font-size: 1.2rem; font-weight: 700;">4K</div>
+                    <div style="font-size: 0.9rem; opacity: 0.8;">Ultra HD</div>
+                </div>
+                <div class="quality-option" data-quality="1080p">
+                    <div style="font-size: 1.2rem; font-weight: 700;">1080p</div>
+                    <div style="font-size: 0.9rem; opacity: 0.8;">Full HD</div>
+                </div>
+                <div class="quality-option" data-quality="720p">
+                    <div style="font-size: 1.2rem; font-weight: 700;">720p</div>
+                    <div style="font-size: 0.9rem; opacity: 0.8;">HD Ready</div>
+                </div>
+            </div>
 
-<section class="content">
-<h2>Why Use InstagramReelsDownloader?</h2>
-<p>
-InstagramReelsDownloader is a fast, free, and secure online tool that allows users to download Instagram Reels and YouTube Shorts videos in high quality without login.
-</p>
+            <button class="download-btn" id="finalDownloadBtn">
+                <i class="fas fa-cloud-download-alt"></i>
+                Download Now
+            </button>
+        </div>
+    </section>
 
-<h2>Frequently Asked Questions</h2>
-<div class="faq">
-<details>
-<summary>Is this downloader free?</summary>
-<p>Yes, this tool is completely free to use.</p>
-</details>
-<details>
-<summary>Do I need to install software?</summary>
-<p>No installation required. Works directly in your browser.</p>
-</details>
-<details>
-<summary>Is it safe?</summary>
-<p>Yes. We don’t store files or personal data.</p>
-</details>
-</div>
-</section>
+    <!-- Features Section -->
+    <section class="features-section" id="features">
+        <h2 class="section-title">Why Choose ReelGrab Pro?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h3>AI-Powered Detection</h3>
+                <p>Our advanced AI automatically detects and extracts the highest quality video available, ensuring perfect downloads every time.</p>
+            </div>
 
-</main>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-layer-group"></i>
+                </div>
+                <h3>Batch Processing</h3>
+                <p>Download multiple reels simultaneously. Create download queues and save entire Instagram story collections with one click.</p>
+            </div>
 
-<footer>
-© 2026 InstagramReelsDownloader. This site is not affiliated with Instagram or Meta Platforms, Inc.
-</footer>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3>Lightning Fast</h3>
+                <p>Powered by global CDN networks, experience download speeds up to 10x faster than other downloader tools.</p>
+            </div>
 
-<script>
-let currentTool="insta";
-function switchTool(tool){
-currentTool=tool;
-document.querySelectorAll(".tabs button").forEach(b=>b.classList.remove("active"));
-event.target.classList.add("active");
-document.getElementById("toolLabel").innerText=
-tool==="insta"?"Instagram Reels URL":"YouTube Shorts URL";
-document.getElementById("url").placeholder=
-tool==="insta"?"Paste Instagram Reels URL here...":"Paste YouTube Shorts URL here...";
-}
-function download(){
-document.getElementById("progress").style.display="block";
-setTimeout(()=>{
-document.getElementById("progress").style.display="none";
-document.getElementById("result").style.display="block";
-},2000);
-}
-function toggleTheme(){
-document.documentElement.dataset.theme=
-document.documentElement.dataset.theme==="dark"?"":"dark";
-}
-</script>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Complete Privacy</h3>
+                <p>We never store your data or downloaded content. All processing happens securely in your browser.</p>
+            </div>
 
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-palette"></i>
+                </div>
+                <h3>Smart Formatting</h3>
+                <p>Automatically convert videos to your preferred format (MP4, MOV, AVI) with customizable compression settings.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3>Cross-Platform</h3>
+                <p>Works seamlessly on desktop, mobile, and tablet. Download directly to any device with our responsive interface.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-number" id="downloadCount">1,247,893</div>
+                <div class="stat-label">Reels Downloaded</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="userCount">324,561</div>
+                <div class="stat-label">Active Users</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">99.8<span style="font-size: 2rem;">%</span></div>
+                <div class="stat-label">Success Rate</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">Uptime</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div>
+                <div class="footer-logo">ReelGrab Pro</div>
+                <p style="color: rgba(234, 234, 234, 0.7); margin-bottom: 1.5rem;">
+                    The most advanced Instagram Reels downloader on the web. 
+                    Experience premium features without compromise.
+                </p>
+                <div style="display: flex; gap: 1rem;">
+                    <div style="width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                        <i class="fab fa-twitter"></i>
+                    </div>
+                    <div style="width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <div style="width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                        <i class="fab fa-discord"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#api">API</a></li>
+                    <li><a href="#changelog">Changelog</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#careers">Careers</a></li>
+                    <li><a href="#press">Press</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#help">Help Center</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                    <li><a href="#privacy">Privacy Policy</a></li>
+                    <li><a href="#terms">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2023 ReelGrab Pro. All rights reserved. This tool is not affiliated with Instagram or Meta Platforms, Inc.</p>
+            <p style="margin-top: 0.5rem; font-size: 0.8rem;">Instagram is a trademark of Meta Platforms, Inc.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Remove no-js class
+        document.documentElement.classList.remove('no-js');
+        
+        // DOM Elements
+        const urlInput = document.getElementById('urlInput');
+        const downloadBtn = document.getElementById('downloadBtn');
+        const demoBtn = document.getElementById('demoBtn');
+        const previewCard = document.getElementById('previewCard');
+        const qualityOptions = document.querySelectorAll('.quality-option');
+        const finalDownloadBtn = document.getElementById('finalDownloadBtn');
+        
+        // Sample video data for demo
+        const sampleVideos = [
+            {
+                title: "Amazing Travel Reel ✈️",
+                duration: "0:45",
+                size: "12.4 MB",
+                views: "245K views",
+                likes: "18.2K"
+            },
+            {
+                title: "Funny Comedy Clip 😂",
+                duration: "0:32",
+                size: "8.7 MB",
+                views: "1.2M views",
+                likes: "89.4K"
+            },
+            {
+                title: "Cooking Tutorial 🍳",
+                duration: "1:15",
+                size: "24.8 MB",
+                views: "542K views",
+                likes: "42.7K"
+            },
+            {
+                title: "Workout Motivation 💪",
+                duration: "0:58",
+                size: "15.3 MB",
+                views: "892K views",
+                likes: "67.3K"
+            }
+        ];
+        
+        // Demo button functionality
+        demoBtn.addEventListener('click', () => {
+            const randomVideo = sampleVideos[Math.floor(Math.random() * sampleVideos.length)];
+            urlInput.value = "https://www.instagram.com/reel/" + Math.random().toString(36).substring(7) + "/";
+            
+            // Show loading state
+            downloadBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Analyzing...';
+            downloadBtn.disabled = true;
+            
+            // Simulate analysis
+            setTimeout(() => {
+                // Update preview with random video data
+                document.getElementById('videoTitle').textContent = randomVideo.title;
+                document.getElementById('videoDuration').textContent = randomVideo.duration;
+                document.getElementById('videoSize').textContent = randomVideo.size;
+                document.getElementById('videoViews').textContent = randomVideo.views;
+                
+                // Reset button
+                downloadBtn.innerHTML = '<i class="fas fa-download"></i> Analyze & Download <span class="quality-badge">AI-Powered</span>';
+                downloadBtn.disabled = false;
+                
+                // Show preview
+                previewCard.style.display = 'block';
+                
+                // Animate counter
+                animateCounter('downloadCount', 1247893, 1300000, 2000);
+                animateCounter('userCount', 324561, 330000, 2000);
+                
+                // Scroll to preview
+                previewCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                
+                // Show success notification
+                showNotification('Video analyzed successfully! Ready to download.', 'success');
+            }, 1500);
+        });
+        
+        // Download button functionality
+        downloadBtn.addEventListener('click', () => {
+            const url = urlInput.value.trim();
+            
+            if (!url) {
+                showNotification('Please enter an Instagram Reel URL', 'error');
+                urlInput.focus();
+                return;
+            }
+            
+            // Show loading state
+            downloadBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Analyzing...';
+            downloadBtn.disabled = true;
+            
+            // Simulate analysis
+            setTimeout(() => {
+                const randomVideo = sampleVideos[Math.floor(Math.random() * sampleVideos.length)];
+                
+                // Update preview
+                document.getElementById('videoTitle').textContent = randomVideo.title;
+                document.getElementById('videoDuration').textContent = randomVideo.duration;
+                document.getElementById('videoSize').textContent = randomVideo.size;
+                document.getElementById('videoViews').textContent = randomVideo.views;
+                
+                // Reset button
+                downloadBtn.innerHTML = '<i class="fas fa-download"></i> Analyze & Download <span class="quality-badge">AI-Powered</span>';
+                downloadBtn.disabled = false;
+                
+                // Show preview
+                previewCard.style.display = 'block';
+                
+                // Animate counters
+                animateCounter('downloadCount', 1247893, 1248000, 1000);
+                
+                // Scroll to preview
+                previewCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                
+                // Show success notification
+                showNotification('Video analyzed successfully! Ready to download.', 'success');
+            }, 2000);
+        });
+        
+        // Quality selector
+        qualityOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                qualityOptions.forEach(opt => opt.classList.remove('selected'));
+                option.classList.add('selected');
+                
+                // Update download button text
+                const quality = option.dataset.quality;
+                finalDownloadBtn.innerHTML = `<i class="fas fa-cloud-download-alt"></i> Download ${quality.toUpperCase()}`;
+            });
+        });
+        
+        // Final download button
+        finalDownloadBtn.addEventListener('click', () => {
+            const selectedQuality = document.querySelector('.quality-option.selected').dataset.quality;
+            
+            // Show downloading state
+            finalDownloadBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Downloading...';
+            finalDownloadBtn.disabled = true;
+            
+            // Simulate download
+            setTimeout(() => {
+                // Create download link
+                const link = document.createElement('a');
+                link.href = '#';
+                link.download = `instagram-reel-${Date.now()}.mp4`;
+                
+                // Trigger download
+                link.click();
+                
+                // Reset button
+                finalDownloadBtn.innerHTML = '<i class="fas fa-check"></i> Downloaded!';
+                
+                // Update counter
+                const currentCount = parseInt(document.getElementById('downloadCount').textContent.replace(/,/g, ''));
+                animateCounter('downloadCount', currentCount, currentCount + 1, 500);
+                
+                // Show success notification
+                showNotification(`Video downloaded in ${selectedQuality.toUpperCase()} quality!`, 'success');
+                
+                // Reset button after 2 seconds
+                setTimeout(() => {
+                    finalDownloadBtn.innerHTML = '<i class="fas fa-cloud-download-alt"></i> Download Now';
+                    finalDownloadBtn.disabled = false;
+                }, 2000);
+            }, 2500);
+        });
+        
+        // Animate counter
+        function animateCounter(elementId, start, end, duration) {
+            const element = document.getElementById(elementId);
+            let startTimestamp = null;
+            
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const current = Math.floor(progress * (end - start) + start);
+                element.textContent = current.toLocaleString();
+                
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            
+            window.requestAnimationFrame(step);
+        }
+        
+        // Show notification
+        function showNotification(message, type) {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 30px;
+                background: ${type === 'success' ? 'rgba(8, 217, 214, 0.9)' : 'rgba(255, 46, 99, 0.9)'};
+                color: white;
+                padding: 1rem 1.5rem;
+                border-radius: 10px;
+                backdrop-filter: blur(10px);
+                z-index: 10000;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                transform: translateX(100px);
+                opacity: 0;
+                transition: all 0.3s ease;
+            `;
+            
+            notification.innerHTML = `
+                <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
+                <span>${message}</span>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Animate in
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+                notification.style.opacity = '1';
+            }, 10);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                notification.style.transform = 'translateX(100px)';
+                notification.style.opacity = '0';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+        
+        // URL input validation
+        urlInput.addEventListener('input', function() {
+            if (this.value.includes('instagram.com/reel/')) {
+                this.style.borderColor = '#08D9D6';
+            } else {
+                this.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+            }
+        });
+        
+        // Initialize animated counters
+        animateCounter('downloadCount', 1200000, 1247893, 2000);
+        animateCounter('userCount', 300000, 324561, 2000);
+        
+        // Add floating particles on mouse move
+        document.addEventListener('mousemove', (e) => {
+            // Create particle occasionally
+            if (Math.random() > 0.95) {
+                const particle = document.createElement('div');
+                particle.style.cssText = `
+                    position: fixed;
+                    width: 4px;
+                    height: 4px;
+                    background: var(--secondary);
+                    border-radius: 50%;
+                    pointer-events: none;
+                    z-index: -1;
+                    left: ${e.pageX}px;
+                    top: ${e.pageY}px;
+                `;
+                
+                document.body.appendChild(particle);
+                
+                // Animate and remove
+                let opacity = 1;
+                const fade = setInterval(() => {
+                    opacity -= 0.05;
+                    particle.style.opacity = opacity;
+                    particle.style.transform = `translateY(-${(1 - opacity) * 20}px)`;
+                    
+                    if (opacity <= 0) {
+                        clearInterval(fade);
+                        document.body.removeChild(particle);
+                    }
+                }, 50);
+            }
+        });
+    </script>
 </body>
 </html>
