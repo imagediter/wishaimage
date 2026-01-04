@@ -1,1 +1,14 @@
+User-agent: *
+Allow: /
+Allow: /sitemap.xml
+Allow: /sitemap.html
+Allow: /robots.txt
 
+# GitHub Pages specific
+Disallow: /_next/
+Disallow: /node_modules/
+Disallow: /vendor/
+
+# Sitemap location (use your actual URL)
+Sitemap: https://imagediter.github.io/instagram-reels/sitemap.xml
+Sitemap: https://yourdomain.com/sitemap.xml
