@@ -1,126 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Instagram Reels Downloader – Fast & Free Video Downloader</title>
-<meta name="description" content="Instagram Reels Downloader lets you download Instagram Reels videos instantly for free. No watermark, fast & mobile-friendly." />
+<meta name="description" content="Download Instagram Reels & YouTube Shorts videos instantly for free. No login, no watermark, mobile-friendly downloader.">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎬</text></svg>">
 
 <style>
-:root {
-  --bg: #f9fafb;
-  --card: #ffffff;
-  --text: #1f2937;
-  --muted: #6b7280;
-  --accent: linear-gradient(135deg,#f58529,#dd2a7b,#8134af,#515bd4);
-  --shadow: 0 12px 30px rgba(0,0,0,0.08);
+:root{
+--bg:#f8fafc;
+--card:#ffffff;
+--text:#0f172a;
+--muted:#64748b;
+--accent:linear-gradient(135deg,#f58529,#dd2a7b,#8134af,#515bd4);
+--shadow:0 12px 30px rgba(0,0,0,.08);
 }
-
-[data-theme="dark"] {
-  --bg: #0f172a;
-  --card: #020617;
-  --text: #e5e7eb;
-  --muted: #94a3b8;
+[data-theme="dark"]{
+--bg:#020617;
+--card:#020617;
+--text:#e5e7eb;
+--muted:#94a3b8;
 }
-
-* { box-sizing: border-box; }
-
-body {
-  margin: 0;
-  font-family: system-ui, sans-serif;
-  background: var(--bg);
-  color: var(--text);
+*{box-sizing:border-box}
+body{
+margin:0;
+font-family:system-ui,sans-serif;
+background:var(--bg);
+color:var(--text);
 }
-
-header {
-  background: var(--accent);
-  color: #fff;
-  padding: 2.8rem 1rem;
-  text-align: center;
+header{
+background:var(--accent);
+color:#fff;
+padding:2.5rem 1rem;
+text-align:center;
+position:relative;
 }
-
-header h1 { margin: 0; font-size: 2rem; }
-header p { margin-top: .5rem; opacity: .95; }
-
-.toggle {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  background: rgba(255,255,255,.2);
-  border: none;
-  color: #fff;
-  padding: .5rem .7rem;
-  border-radius: 8px;
-  cursor: pointer;
+.logo{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+width:56px;
+height:56px;
+border-radius:16px;
+background:rgba(255,255,255,.2);
+font-size:28px;
+margin-bottom:.5rem;
 }
-
-main {
-  max-width: 800px;
-  margin: -2rem auto 0;
-  padding: 1rem;
+.toggle{
+position:absolute;
+top:15px;
+right:15px;
+background:rgba(255,255,255,.25);
+border:none;
+color:#fff;
+padding:.4rem .6rem;
+border-radius:8px;
+cursor:pointer;
 }
-
-.card {
-  background: var(--card);
-  border-radius: 16px;
-  box-shadow: var(--shadow);
-  padding: 1.5rem;
+main{
+max-width:900px;
+margin:-2rem auto 0;
+padding:1rem;
 }
-
-label { font-weight: 600; }
-
-input {
-  width: 100%;
-  padding: .9rem 1rem;
-  border-radius: 10px;
-  border: 1px solid #d1d5db;
-  margin-top: .4rem;
+.tabs{
+display:flex;
+gap:.5rem;
+margin-bottom:1rem;
 }
-
-button {
-  background: var(--accent);
-  color: #fff;
-  border: none;
-  padding: .9rem 1.2rem;
-  border-radius: 10px;
-  font-weight: 600;
-  cursor: pointer;
-  margin-top: 1rem;
+.tabs button{
+flex:1;
+padding:.8rem;
+border-radius:12px;
+border:1px solid #e5e7eb;
+background:var(--card);
+cursor:pointer;
+font-weight:600;
 }
-
-.loader {
-  display: none;
-  margin-top: 1rem;
-  font-weight: 600;
+.tabs button.active{
+background:var(--accent);
+color:#fff;
+border:none;
 }
-
-.result {
-  display: none;
-  margin-top: 2rem;
-  text-align: center;
+.card{
+background:var(--card);
+border-radius:18px;
+box-shadow:var(--shadow);
+padding:1.5rem;
 }
-
-.result img {
-  max-width: 320px;
-  border-radius: 14px;
-  box-shadow: var(--shadow);
+label{font-weight:600}
+input{
+width:100%;
+padding:.9rem 1rem;
+margin-top:.4rem;
+border-radius:12px;
+border:1px solid #cbd5f5;
 }
-
-section.content {
-  margin-top: 3rem;
-  padding: 1.5rem;
+button.primary{
+margin-top:1rem;
+width:100%;
+padding:.9rem;
+border:none;
+border-radius:12px;
+font-weight:600;
+background:var(--accent);
+color:#fff;
+cursor:pointer;
 }
-
-section.content h2 {
-  margin-top: 0;
+.options{
+display:flex;
+justify-content:space-between;
+margin-top:1rem;
+font-size:.9rem;
 }
-
-footer {
-  text-align: center;
-  font-size: .85rem;
-  color: var(--muted);
-  padding: 2rem 1rem;
+.progress{
+display:none;
+margin-top:1rem;
+height:10px;
+background:#e5e7eb;
+border-radius:999px;
+overflow:hidden;
+}
+.progress span{
+display:block;
+height:100%;
+width:0%;
+background:var(--accent);
+animation:load 2s forwards;
+}
+@keyframes load{to{width:100%}}
+.result{
+display:none;
+text-align:center;
+margin-top:1.5rem;
+}
+.result img{
+max-width:320px;
+border-radius:14px;
+box-shadow:var(--shadow);
+}
+section.content{
+margin-top:3rem;
+padding:1.5rem;
+}
+section.content h2{margin-top:0}
+.faq details{
+background:var(--card);
+border-radius:14px;
+padding:1rem;
+margin-bottom:.8rem;
+box-shadow:var(--shadow);
+}
+footer{
+text-align:center;
+padding:2rem 1rem;
+font-size:.85rem;
+color:var(--muted);
 }
 </style>
 </head>
@@ -129,39 +166,61 @@ footer {
 
 <header>
 <button class="toggle" onclick="toggleTheme()">🌙</button>
+<div class="logo">🎬</div>
 <h1>InstagramReelsDownloader</h1>
-<p>Download Instagram Reels Instantly & for Free</p>
+<p>Download Instagram Reels & Shorts Instantly — 100% Free</p>
 </header>
 
 <main>
 
-<div class="card">
-<label for="url">Instagram Reels URL</label>
-<input id="url" placeholder="Paste Instagram Reels URL here..." />
-<button onclick="startDownload()">Download</button>
+<div class="tabs">
+<button class="active" onclick="switchTool('insta')">Instagram Reels</button>
+<button onclick="switchTool('yt')">YouTube Shorts</button>
+</div>
 
-<div class="loader" id="loader">⏳ Fetching video...</div>
+<div class="card">
+
+<label id="toolLabel">Instagram Reels URL</label>
+<input id="url" placeholder="Paste Instagram Reels URL here...">
+
+<div class="options">
+<label><input type="checkbox"> Remove Watermark</label>
+<span>HD Quality</span>
+</div>
+
+<button class="primary" onclick="download()">Download</button>
+
+<div class="progress" id="progress"><span></span></div>
 
 <div class="result" id="result">
-<img src="https://via.placeholder.com/320x180?text=Reels+Preview" alt="Instagram Reels preview">
-<p><strong>Amazing Travel Reel ✈️ (Mock)</strong></p>
-<button>Download Video</button>
+<img src="https://via.placeholder.com/320x180?text=Video+Preview" alt="Video Preview">
+<p><strong>Sample Video Preview (Mock)</strong></p>
+<button class="primary">Download Video</button>
 </div>
+
 </div>
 
 <section class="content">
-<h2>Instagram Reels Downloader</h2>
+<h2>Why Use InstagramReelsDownloader?</h2>
 <p>
-InstagramReelsDownloader is a free online tool that allows you to download Instagram Reels videos in high quality without watermark. Just paste the reel link and download instantly.
+InstagramReelsDownloader is a fast, free, and secure online tool that allows users to download Instagram Reels and YouTube Shorts videos in high quality without login.
 </p>
 
-<h2>Why Use Our Tool?</h2>
-<p>
-✔ Fast & free downloads<br>
-✔ Works on mobile & desktop<br>
-✔ No login required<br>
-✔ Simple & secure interface
-</p>
+<h2>Frequently Asked Questions</h2>
+<div class="faq">
+<details>
+<summary>Is this downloader free?</summary>
+<p>Yes, this tool is completely free to use.</p>
+</details>
+<details>
+<summary>Do I need to install software?</summary>
+<p>No installation required. Works directly in your browser.</p>
+</details>
+<details>
+<summary>Is it safe?</summary>
+<p>Yes. We don’t store files or personal data.</p>
+</details>
+</div>
 </section>
 
 </main>
@@ -171,17 +230,26 @@ InstagramReelsDownloader is a free online tool that allows you to download Insta
 </footer>
 
 <script>
-function startDownload() {
-  document.getElementById("loader").style.display = "block";
-  setTimeout(() => {
-    document.getElementById("loader").style.display = "none";
-    document.getElementById("result").style.display = "block";
-  }, 1500);
+let currentTool="insta";
+function switchTool(tool){
+currentTool=tool;
+document.querySelectorAll(".tabs button").forEach(b=>b.classList.remove("active"));
+event.target.classList.add("active");
+document.getElementById("toolLabel").innerText=
+tool==="insta"?"Instagram Reels URL":"YouTube Shorts URL";
+document.getElementById("url").placeholder=
+tool==="insta"?"Paste Instagram Reels URL here...":"Paste YouTube Shorts URL here...";
 }
-
-function toggleTheme() {
-  document.documentElement.dataset.theme =
-    document.documentElement.dataset.theme === "dark" ? "" : "dark";
+function download(){
+document.getElementById("progress").style.display="block";
+setTimeout(()=>{
+document.getElementById("progress").style.display="none";
+document.getElementById("result").style.display="block";
+},2000);
+}
+function toggleTheme(){
+document.documentElement.dataset.theme=
+document.documentElement.dataset.theme==="dark"?"":"dark";
 }
 </script>
 
